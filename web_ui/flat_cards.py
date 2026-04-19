@@ -14,6 +14,7 @@ def display_cards(df:pd.DataFrame,cols_per_row=2,cards_per_page=20,key_prefix='c
     - cards_per_page: карточек на странице
     - key_prefix: префикс для уникальных ключей виджетов
     """
+
     if 'scroll_to_top' not in st.session_state:
         st.session_state.scroll_to_top = False
 
@@ -24,12 +25,7 @@ def display_cards(df:pd.DataFrame,cols_per_row=2,cards_per_page=20,key_prefix='c
         scroll_to_here(0, key='top')
         st.session_state.scroll_to_top = False
 
-
-    if df.empty:
-        st.info('Нет квартир, соответствующих фильтрам')
-        return
     
-
     total_cards = len(df)
     total_pages = math.ceil(total_cards/cards_per_page)
 

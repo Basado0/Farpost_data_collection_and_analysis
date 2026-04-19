@@ -43,16 +43,22 @@ tab1, tab2 = st.tabs(["📋 Таблица квартир", "📊 Статист
 
 
 with tab1:
-    display_cards(
-        filtered_df, 
-        cols_per_row=2,       # можно 2 или 3
-        cards_per_page=12,    # количество на страницу
-        key_prefix="flat"
-    )
+    if filtered_df.empty:
+        st.info('Нет квартир, соответствующих фильтрам')
+
+    else:
+        display_cards(
+            filtered_df, 
+            cols_per_row=2,       # можно 2 или 3
+            cards_per_page=12,    # количество на страницу
+            key_prefix="flat"
+        )
 
 
 with tab2:
-    # Дашборд с графиками
-    make_dashboard(filtered_df)
+    if filtered_df.empty:
+        st.info('Нет квартир, измените фильтры')
+    else:
+        make_dashboard(filtered_df)
 
 
