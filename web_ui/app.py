@@ -5,12 +5,18 @@ import json
 from side_bar_filters import apply_filters
 from flat_cards import display_cards
 from dashboard import make_dashboard
+import os
 
 st.set_page_config(page_title="Анализ квартир", layout="wide")
 
 @st.cache_data
 def load_data():
-    with open('Farpost_detail.json','r',encoding='utf-8') as f:
+
+    #Правильное расположение файла
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(script_dir, 'Farpost_detail.json')
+
+    with open(file_path,'r',encoding='utf-8') as f:
         data = json.load(f)
     
     df = pd.DataFrame(data)
