@@ -25,6 +25,8 @@ def load_data():
         df[field] = df[field].fillna(0)
     
     df['rent_period'] = df['rent_period'].fillna('Не указано')
+
+    df = df[df['seller_type'].str.strip() != '']
     
     return df
 
