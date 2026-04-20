@@ -9,6 +9,7 @@ import os
 
 st.set_page_config(page_title="Анализ квартир", layout="wide")
 
+@st.cache_data
 def load_data():
 
     #Правильное расположение файла
